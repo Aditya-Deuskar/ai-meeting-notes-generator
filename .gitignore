@@ -1,0 +1,27 @@
+# Virtual environment - never push this
+venv/
+
+# Whisper model cache
+~/.cache/whisper/
+
+# Audio files - too large for git
+*.mp3
+*.wav
+*.m4a
+*.ogg
+*.flac
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# VS Code settings
+.vscode/
+
+# Environment variables (if we add secrets later)
+.env
+
+# OS clutter
+.DS_Store
+Thumbs.db
