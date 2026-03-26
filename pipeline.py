@@ -179,7 +179,7 @@ def run_pipeline(audio_path: str) -> dict:
 
 if __name__ == "__main__":
     # Change this to any audio file you have for testing
-    test_audio = "test_audio.mp3"
+    test_audio = "test_audio.wav"
     
     results = run_pipeline(test_audio)
     
