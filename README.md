@@ -1,6 +1,6 @@
 # 🎙️ AI Meeting Notes Generator
 
-Stop typing notes during meetings. Upload your recording and get back structured notes, action items, and an executive summary — automatically, in seconds, entirely on your own machine.
+Stop typing notes during meetings. Upload your recording and get back structured notes, action items, and an executive summary — powered by Whisper transcription and a 3-stage Llama pipeline, running entirely on your own machine.
 
 ---
 
@@ -21,7 +21,7 @@ All processing happens locally on your hardware. **No data ever leaves your mach
 
 ## 🧠 How It Works
 
-Four AI models run in sequence, each feeding into the next:
+Whisper handles transcription, then Llama runs three specialised tasks in sequence:
 
 ```
 Audio Recording
@@ -30,13 +30,13 @@ Audio Recording
 Whisper (medium)       →  Transcribes speech to text
       │
       ▼
-Llama 3.1 8B           →  Cleans up the raw transcript
+Llama 3.1 8B           →  Stage 1: Cleans up the raw transcript
       │
       ▼
-Llama 3.1 8B           →  Extracts action items with owners and deadlines
+Llama 3.1 8B           →  Stage 2: Extracts action items with owners and deadlines
       │
       ▼
-Llama 3.1 8B           →  Generates executive summary
+Llama 3.1 8B           →  Stage 3: Generates executive summary
       │
       ▼
 Structured Meeting Notes
@@ -130,3 +130,9 @@ Open `http://localhost:8501` in your browser, upload your recording, and click *
 | UI | Streamlit |
 | ML Framework | PyTorch (CUDA) |
 | Language | Python 3.13 |
+
+---
+
+## 👤 Author
+
+**Aditya Deuskar**  
