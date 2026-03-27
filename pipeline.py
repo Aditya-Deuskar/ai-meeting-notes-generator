@@ -10,7 +10,7 @@ LLAMA_MODEL   = "llama3.1:8b"  # Must match what you pulled with ollama pull
 
 # ── Model 1: Whisper — Speech to Text ─────────────────────────────────────────
 
-def transcribe_audio(audio_path: str) -> str:
+def transcribe_audio(audio_path: str, language: str = None) -> str:
     """Takes an audio file path, returns raw transcript text."""
     
     print("🎙️  Model 1: Transcribing audio with Whisper...")
@@ -19,7 +19,7 @@ def transcribe_audio(audio_path: str) -> str:
     print(f"   Using device: {device}")
     
     model = whisper.load_model(WHISPER_MODEL, device=device)
-    result = model.transcribe(audio_path)
+    result = model.transcribe(audio_path, language=None if language == "Auto Detect" else language)
     
     transcript = result["text"]
     print(f"   ✅ Transcription done — {len(transcript)} characters")
@@ -142,7 +142,7 @@ Executive summary:"""
 
 # ── Main Pipeline ─────────────────────────────────────────────────────────────
 
-def run_pipeline(audio_path: str) -> dict:
+def run_pipeline(audio_path: str, language: str = None) -> dict:
     """
     Runs the full 4-model pipeline.
     Returns a dict with all outputs.

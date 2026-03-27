@@ -28,6 +28,13 @@ with st.sidebar:
         index=3,  # medium by default
         help="Larger = more accurate but slower"
     )
+
+    language = st.selectbox(
+    "Audio Language",
+    options=["Auto Detect", "English", "Hindi", "Marathi", "Spanish", "French", "German", "Arabic", "Chinese", "Japanese", "Portuguese"],
+    index=0,
+    help="Select the language spoken in the recording"
+)
     
     st.markdown("---")
     st.markdown("**Model Info**")
@@ -72,7 +79,7 @@ if uploaded_file:
                 import pipeline
                 pipeline.WHISPER_MODEL = whisper_model
                 
-                results = run_pipeline(tmp_path)
+                results = run_pipeline(tmp_path, language=language)
                 
                 st.write("🧹 Model 2: Cleaning transcript...")
                 st.write("✅ Model 3: Extracting action items...")
